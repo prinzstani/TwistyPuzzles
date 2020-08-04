@@ -1,0 +1,41 @@
+body {
+  background: lightgray;
+}
+
+.content{
+    display: grid;
+    margin: auto;
+}
+
+canvas {
+  border: 2px solid blue;
+  width: 10px;
+  height: 10px;
+  margin: 10px;
+}
+
+div {
+  border: 1px solid green;
+  padding: 5px;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+}
+
+.puzzleRow {
+  display: flex;
+  justify-content: center;
+  width: contain;
+}
+
+button {
+  margin: 3px;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
