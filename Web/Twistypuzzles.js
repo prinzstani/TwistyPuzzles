@@ -13,12 +13,11 @@
   
         shapes = [];
 
-        createCube(0, 0, 0, scene, shapes, 4)
-
-
-        createCube(5, 5, 0, scene, shapes, 4)
-
-        createCube(-5, -5, 0, scene, shapes, 4)
+        createCube(new THREE.BoxGeometry(4, 4, 4), 0, 0, 0, scene, shapes, 4)
+        createCube(new THREE.IcosahedronGeometry(4), 5, 5, 0, scene, shapes, 4)
+        createCube(new THREE.DodecahedronGeometry(4), -5, -5, 0, scene, shapes, 4)
+        createCube(new THREE.TetrahedronGeometry(4), -5, 5, 0, scene, shapes, 4)
+        createCube(new THREE.OctahedronGeometry(4), 5, -5, 0, scene, shapes, 4)
 
         // position and point the camera to the center of the scene
         camera.position.x = -30;
@@ -44,8 +43,7 @@
             shape.rotation.x += 0.01;
             shape.rotation.y += 0.02;
             if(Math.random()>0.99) {
-
-                shape.scale.set(3, 3, 3)
+                shape.scale.set(2, 2, 2)
             }
           }
           // render using requestAnimationFrame
@@ -55,20 +53,19 @@
       }
       window.onload = init;
   
-      createCube = function (x, y, z, scene, shapes, size) {
+      createCube = function (geometry, x, y, z, scene, shapes, size) {
                   // create a cube
-  
-        let geometry = new THREE.BoxGeometry(size, size, size);
+//        let geometry = new THREE.BoxGeometry(size, size, size);
         for (let i = 0; i < geometry.faces.length; i++) {
           geometry.faces[i].color.set("black");
         }
-        // The cube should have roughly 12 faces
+        // The cube should have roughly 12 faces (6 sides with 2 triangles each)
         geometry.faces[0].color.set("red");
         geometry.faces[1].color.set("red");
-        geometry.faces[4].color.set("blue");
-        geometry.faces[5].color.set("blue");
-        geometry.faces[8].color.set("yellow");
-        geometry.faces[9].color.set("yellow");
+        geometry.faces[2].color.set("blue");
+//        geometry.faces[5].color.set("blue");
+        geometry.faces[3].color.set("yellow");
+//        geometry.faces[9].color.set("yellow");
   
         let material = new THREE.MeshBasicMaterial({
           color: 0xffffff,
